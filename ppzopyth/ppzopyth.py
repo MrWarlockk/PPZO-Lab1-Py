@@ -1,4 +1,5 @@
 
+# -----KALKULATOR-----
 def calcFunc():
     while True:
         try:
@@ -39,7 +40,7 @@ def calcFunc():
             return None;
         return numb1/numb2;
 
-
+# -----KONWERTOR TEMPERATUR-----
 def temperFunc():
 
     while True:
@@ -68,6 +69,33 @@ def temperFunc():
         else:
             print("Nieprawidlowa jednostka, podaj poprawna.")
 
+
+# -----SREDNIA UCZNIA-----          
+def avgFunc():
+    while True:
+        try:
+            studentGradeAmount = int(input("Podaj ilosc ocen ucznia: "))
+            if(studentGradeAmount > 0):
+                break;
+            print("Nieprawidlowa wartosc, podaj liczbe wieksza od 0.")
+        except ValueError:
+            print("Nieprawidlowa wartosc, podaj liczbe wieksza od 0.")
+
+    userSum = 0
+
+    for x in range(0, studentGradeAmount):
+        while True:
+            try:
+                studentGrade = float(input(f"Podaj {x+1} ocene ucznia: "))
+                if(studentGrade >= 1 and studentGrade <= 6):
+                    userSum += studentGrade
+                    break;
+                else: 
+                    print("Nieprawidlowa wartosc, podaj prawidlowa ocene.")
+            except ValueError:
+                print("Nieprawidlowa wartosc, podaj prawidlowa ocene.")
+    return userSum/studentGradeAmount;
+
 while True:
     choiceMain = input("Input(1: Zadanie 1, 2: Zadanie 2, 3: Zadanie 3, pozostale symbole wyjscie z konsoli): ")
     if(choiceMain == "1"):
@@ -86,6 +114,16 @@ while True:
         if (temperFuncRet != None):
             print(f"Wynik to: {temperFuncRet}")
         else: print("Wystapil blad")
+
+    elif(choiceMain == "3"):
+
+        gradeAvg = avgFunc()
+        print(f"Srednia ucznia to: {gradeAvg}")
+        if (gradeAvg >= 3.0):
+            print("Uczen zdal")
+        else:
+            print("Uczen nie zdal")
+
     else:
         break;
 
